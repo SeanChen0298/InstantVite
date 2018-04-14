@@ -22,6 +22,10 @@ body {
     color: #FFFFFF;
 }
 
+.images img {
+	width:40%;
+}
+
 .footer {
 	position: fixed;
 	width:100%;

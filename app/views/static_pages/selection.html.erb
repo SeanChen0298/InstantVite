@@ -1,2 +1,46 @@
-<h1>StaticPages#selection</h1>
-<p>Find me in app/views/static_pages/selection.html.erb</p>
+<img src="<%= image_path("bg.png")%>" style="width:100% ; position: fixed;"/>
+<div class="row" style="margin:5%;">	
+		<div class="col-sm-5" style="text-align:center;font-family: 'Amatic SC', cursive;
+	font-size: 50px;
+	font-weight: 300;
+	color: #FFFFFF;">
+        <%= link_to image_tag("invw.png"), landing_path, class: "images" %>
+			</div>
+			<div class="col-sm-2" style="text-align:center;font-family: 'Amatic SC', cursive;
+	font-size: 150px;
+	font-weight: 300;
+	color: #FFFFFF;">
+				<p></p>
+			</div>
+			<div class="col-sm-5" style="text-align:center;font-family: 'Amatic SC', cursive;
+	font-size: 50px;
+	font-weight: 300;
+	color: #FFFFFF; margin-top:20px;">
+        <%= link_to image_tag("joiw.png"), landing_path, class: "images" %>
+			</div>
+	</div>
+<div class="row" style="margin: 2%; margin-left: -15px;">	
+		<div class="col-sm-5" style="text-align:center;">
+				<%= link_to 'Be an Invitier', landing_path, class:"btn btn-default" %>
+			</div>
+			<div class="col-sm-2" style="text-align:center;">
+				<p></p>
+			</div>
+			<div class="col-sm-5" style="text-align:center;">
+				<%= link_to 'Be a Joiner', landing_path, class:"btn btn-default" %>
+			</div>
+	</div>
+		
+		<div class="col-sm-12">
+      </br>
+			<p style="text-align:center;font-family: 'Amatic SC', cursive;
+	font-size: 80px;
+	font-weight: 300;
+	color: #FFFFFF;">InstantVite</p>
+		</div>
+		
+		<div class="footer">
+			<p>
+				InstantVite | FutureHacks 2018
+			</p>
+		</div>

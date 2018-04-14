@@ -1,10 +1,9 @@
 class JiosController < ApplicationController
   before_action :set_jio, only: [:show, :edit, :update, :destroy]
 
-  # GET /jios
-  # GET /jios.json
-  def index
-    @jios = Jio.all
+  # GET /static_pages/landing
+  # GET /static_pages/landing.json
+  def landing
   end
 
   # GET /jios/1
