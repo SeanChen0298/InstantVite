@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @jio.name %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @jio.contact_number %>
+</p>
+
+<%= link_to 'Edit', edit_jio_path(@jio) %> |
+<%= link_to 'Back', jios_path %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Jios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Time limit</th>
+      <th>Max pax</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jios.each do |jio| %>
+      <tr>
+        <td><%= jio.event %></td>
+        <td><%= jio.description %></td>
+        <td><%= jio.location %></td>
+        <td><%= jio.time_limit %></td>
+        <td><%= jio.max_pax %></td>
+        <td><%= link_to 'Show', jio %></td>
+        <td><%= link_to 'Edit', edit_jio_path(jio) %></td>
+        <td><%= link_to 'Destroy', jio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', new_jio_path %>

@@ -1,0 +1,2 @@
+class Jio < ApplicationRecord
+end

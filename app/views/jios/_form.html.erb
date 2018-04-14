@@ -1,0 +1,42 @@
+<%= form_with(model: jio, local: true) do |form| %>
+  <% if jio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(jio.errors.count, "error") %> prohibited this jio from being saved:</h2>
+
+      <ul>
+      <% jio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :event %>
+    <%= form.text_field :event %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_limit %>
+    <%= form.text_field :time_limit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_pax %>
+    <%= form.text_field :max_pax %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
