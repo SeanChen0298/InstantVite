@@ -28,12 +28,10 @@
             </div>
             
             <div class="modal-footer">
-              
-              <%= link_to 'Back', landing_path, class:"btn btn-default" %>
-              
+              <%= link_to 'Back', landing_path, class:"btn btn-default" %>              
               <div class="actions">
-                <%= link_to 'Confirm', selection_path, class:"btn btn-default" %>
-                <!--<%= form.submit "Comfirm", class: "btn btn-default" %>-->
+<!--                 <% link_to 'Confirm', selection_path, class:"btn btn-default" %> -->
+               <%= form.submit "Submit", class: "btn btn-default" %>
               </div>
             </div>
           <% end %>

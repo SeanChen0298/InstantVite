@@ -27,7 +27,8 @@ class JiosController < ApplicationController
 
     respond_to do |format|
       if @jio.save
-        format.html { redirect_to @jio, notice: 'Jio was successfully created.' }
+        session[:jios] = @jio.id
+        format.html { render :template => "static_pages/selection"  }
         format.json { render :show, status: :created, location: @jio }
       else
         format.html { render :new }

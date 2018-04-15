@@ -1,10 +1,10 @@
-<%= form_with(model: jio, local: true) do |form| %>
-  <% if jio.errors.any? %>
+<%= form_with(model: @jio, local: true) do |form| %>
+  <% if @jio.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(jio.errors.count, "error") %> prohibited this jio from being saved:</h2>
+      <h2><%= pluralize(@jio.errors.count, "error") %> prohibited this jio from being saved:</h2>
 
       <ul>
-      <% jio.errors.full_messages.each do |message| %>
+      <% @jio.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :event %>
+    <%= form.l/abel :event %>
     <%= form.text_field :event %>
   </div>
 

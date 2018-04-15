@@ -4,17 +4,16 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.where(expiry > Time.now)
   end
-
+  
+  def new
+    @event = Event.new
+  end
+  
   # GET /events/1
   # GET /events/1.json
   def show
-  end
-
-  # GET /events/new
-  def new
-    @event = Event.new
   end
 
   # GET /events/1/edit
@@ -28,7 +27,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        @event.update(expiry: @event.created_at+@event.timelimit.minutes )
+        format.html { redirect_to @event }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
