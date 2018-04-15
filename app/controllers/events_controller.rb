@@ -1,10 +1,14 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:join_event, :show, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where(expiry > Time.now)
+    @events = Event.all
+  end
+  
+  def expiry
+    @event.created_at + timelimit.minutes
   end
   
   def new
@@ -58,6 +62,18 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+  
+  def join_event
+    user = Jio.find(session[:jios])
+    if user == @event.jio
+      redirect_to @event, notice: "You have already joined this event."
+    elsif user.in? @event.jios 
+      redirect_to @event, notice: "You have already joined this event."
+    else 
+      @event.jios << user
+      redirect_to @event, notice: "Thanks for joining."
     end
   end
 

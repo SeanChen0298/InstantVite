@@ -1,7 +1,8 @@
 class Event < ApplicationRecord
   belongs_to :jio
-  
-  def expiry
-    created_at + timelimit.minutes
+  has_many :joiners
+   has_many :jios, through: :joiners
+  def time_left
+    (created_at + timelimit.minutes)
   end
 end

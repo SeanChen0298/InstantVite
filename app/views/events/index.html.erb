@@ -1,37 +1,41 @@
-<p id="notice"><%= notice %></p>
+<img src="<%= image_path("bg.png")%>" style="width:100% ; position: fixed;"/>
+<div class="modal-dialog" style="top: 50%; position: fixed; left: 50%; transform: translate(-50%, -65%); z-index: 100">
+		<p style="text-align:left;font-family: 'Amatic SC', cursive; font-size: 30px; font-weight: 300; color: #FFFFFF;">Event List</p>
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<table class="table table-hover">
+					  <tr>
 
-<h1>Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th>Grouppax</th>
-      <th>Timelimit</th>
-      <th>Jio</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.description %></td>
-        <td><%= event.location %></td>
-        <td><%= event.grouppax %></td>
-        <td><%= event.timelimit %></td>
-        <td><%= event.jio %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Event', new_event_path %>
+					  <th>Name</th>
+					  <th>Description</th>
+					  <th>Location</th>
+					  <th>Time Left</th>
+             <th>Action</th>
+					  </tr>
+            <% @events.each do |event| %>
+              <% next if (event.created_at + event.timelimit.minutes) < Time.now %>
+              <tr>
+              <td><%= event.name %></td>
+              <td><%= event.description %></td>
+              <td><%= event.location %></td>
+              <td><%= time_ago_in_words(event.time_left)  %></td>
+              <td><%= link_to 'join', join_event_event_path(event.id)  %></td>  
+              </tr>
+            <% end %>
+					  
+					</table>
+					</br>
+				</div>
+			</div>
+		</div>
+		
+		<div class="icon">
+			<img src="<%= image_path("joiw.png")%>" style="width:12%; "/>
+		</div>
+		
+		<div class="footer">
+			<p>
+				InstantVite | FutureHacks 2018
+			</p>
+		</div>

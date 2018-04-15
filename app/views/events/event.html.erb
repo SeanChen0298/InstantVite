@@ -1,44 +1,24 @@
 <img src="<%= image_path("bg.png")%>" style="width:100% ; position: fixed;"/>
 <div class="modal-dialog" style="top: 50%; position: fixed; left: 50%; transform: translate(-50%, -65%);">
-		<p style="text-align:left;font-family: 'Amatic SC', cursive; font-size: 30px; font-weight: 300; color: #FFFFFF;">Waiting for event...</p>
+		<p style="text-align:left;font-family: 'Amatic SC', cursive; font-size: 30px; font-weight: 300; color: #FFFFFF;">Event List</p>
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-body">
-					<p style="text-align:center;">timer here</p>
-					</br>
 					<table class="table table-hover">
 					  <tr>
+
 					  <th>Name</th>
-					  <td>:</td>
-					  <td><%= @events.name =></td>
-					  </tr>
-					  <tr>
 					  <th>Description</th>
-					  <td>:</td>
-					  <td><%= @events.description =></td>
-					  </tr>
-					  <tr>
 					  <th>Location</th>
-					  <td>:</td>
-					  <td><%= @events.location =></td>
-					  </tr>
-					</table>
-					</br>
-					<table class="table table-hover">
-					  <tr>
-					  <th>No.</th>
-					  <th>Name</th>
-            <td>:</td>
-					  <td><%= @jios.name =></td>  
-					  <th>Contact</th>
-            <td>:</td>
-					  <td><%= @jios.contact_number =></td>
+					  <th>Time Left</th>
 					  </tr>
 					  <tr>
-					  <td>$count</td>
-					  <td>@jio.name</td>
-					  <td></td>
+					  <td><%= @event.name %></td>
+					  <td><%= @event.description %></td>
+					  <td><%= @event.location %></td>
+					  <td><%= x = (@event.created_at+@event.timelimit.minutes) - Time.now  %></td>
 					  </tr>
+					  
 					</table>
 					</br>
 				</div>
@@ -46,8 +26,7 @@
 		</div>
 		
 		<div class="icon">
-			<img src="img/joiw.png" style="width:10%"/>
-			<p>Joiner</p>
+			<img src="<%= image_path("joiw.png")%>" style="width:12%; "/>
 		</div>
 		
 		<div class="footer">
@@ -55,10 +34,33 @@
 				InstantVite | FutureHacks 2018
 			</p>
 		</div>
-        
-      <script>
-        int $count = 0;
-        if (int x = 0; x < @event.grouppax; x ++ ){
-          $count += 1;
-          }
-      </script>
+
+		<script>
+		// Set the date we're counting down to
+			var quote = "<%= x = @event.created_at+@event.timelimit.minutes %>";
+		var countDownDate = new Date(quote).getTime();
+
+		// Update the count down every 1 second
+		var x = setInterval(function() {
+
+			// Get todays date and time
+			var now = new Date().getTime();
+
+			// Find the distance between now an the count down date
+			var distance = countDownDate - now;
+
+			// Time calculations for days, hours, minutes and seconds
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			// Display the result in the element with id="demo"
+			document.getElementById("time").innerHTML = minutes + "m " + seconds + "s ";
+
+			// If the count down is finished, write some text 
+			if (distance < 0) {
+				clearInterval(x);
+				document.getElementById("time").innerHTML = "EXPIRED";
+				document.getElementById("title").innerHTML = "Event Started/ Ended";
+			}
+		}, 1000);
+		</script>
